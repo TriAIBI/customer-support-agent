@@ -13,6 +13,7 @@ from models import UserAccountContext, HandoffData, InputGuardRailOutput
 from my_agents.menu_agent import menu_agent
 from my_agents.reservation_agent import reservation_agent
 from my_agents.order_agent import order_agent
+from my_agents.complaint_agent import complaint_agent
 
 input_guardrail_agent = Agent(
     name="Input Guardrail Agent",
@@ -76,6 +77,10 @@ def dynamic_triage_agent_instructions(
     📦 ORDER MANAGEMENT - Route here for:
     - Order status, recommendations, to-go orders questions
     - "Where's my order?", "Want to return this", "What do you recommend?"
+
+    � COMPLAINT SUPPORT - Route here for:
+    - Listen to the customer's concerns and ask any necessary follow-up questions to understand their issues
+    - "The food was not good.", "The service was slow.", "The staff was rude."
     
     CLASSIFICATION PROCESS:
     1. Listen to the customer's needs and ask any necessary follow-up questions to understand their questions
@@ -125,5 +130,6 @@ triage_agent = Agent(
         make_handoff(reservation_agent),
         make_handoff(menu_agent),
         make_handoff(order_agent),
+        make_handoff(complaint_agent),
     ],
 )

@@ -15,6 +15,11 @@ class InputGuardRailOutput(BaseModel):
     is_off_topic: bool
     reason: str
 
+class ComplaintOutputGuardRailOutput(BaseModel):
+
+    contains_off_topic: bool
+    contains_complaint_data: bool
+    reason: str
 
 class HandoffData(BaseModel):
 
