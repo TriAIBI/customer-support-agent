@@ -1,6 +1,8 @@
 import dotenv
 
 dotenv.load_dotenv()
+
+api_key = st.secrets["OPENAI_API_KEY"]
 from openai import OpenAI
 import asyncio
 import streamlit as st
@@ -8,7 +10,7 @@ from agents import Runner, SQLiteSession, InputGuardrailTripwireTriggered, Outpu
 from models import UserAccountContext
 from my_agents.triage_agent import triage_agent
 
-client = OpenAI()
+client = OpenAI(api_key=api_key)
 
 user_account_ctx = UserAccountContext(
     customer_id=1,
@@ -82,7 +84,7 @@ async def run_agent(message):
 
         except InputGuardrailTripwireTriggered:
             st.write("I can't help you with that.")
-            
+
         except OutputGuardrailTripwireTriggered:
             st.write("Cant show you that answer.")
             st.session_state["text_placeholder"].empty()
