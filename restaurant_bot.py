@@ -2,7 +2,6 @@ import dotenv
 
 dotenv.load_dotenv()
 
-api_key = st.secrets["OPENAI_API_KEY"]
 from openai import OpenAI
 import asyncio
 import streamlit as st
@@ -10,6 +9,7 @@ from agents import Runner, SQLiteSession, InputGuardrailTripwireTriggered, Outpu
 from models import UserAccountContext
 from my_agents.triage_agent import triage_agent
 
+api_key = st.secrets["OPENAI_API_KEY"]
 client = OpenAI(api_key=api_key)
 
 user_account_ctx = UserAccountContext(
