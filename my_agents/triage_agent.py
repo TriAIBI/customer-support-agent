@@ -106,8 +106,8 @@ def handle_handoff(
             f"""
             Handing off to {input_data.to_agent_name}
             Reason: {input_data.reason}
-            Issue Type: {input_data.issue_type}
-            Description: {input_data.issue_description}
+            Issue Type: {input_data.question_type}
+            Description: {input_data.question_details}
         """
         )
 

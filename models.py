@@ -24,5 +24,6 @@ class ComplaintOutputGuardRailOutput(BaseModel):
 class HandoffData(BaseModel):
 
     to_agent_name: str
+    reason: str
     question_type: str
     question_details: str
